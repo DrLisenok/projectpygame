@@ -160,7 +160,7 @@ def load_highscore():
 
 def save_highscore(value):
     with open('highscore.txt', 'w') as f:
-        f.write(str(value))
+        f.write(str(int(value)))
 
 
 # Игровые переменные
@@ -244,7 +244,7 @@ while running:
         if player.rect.y <= HEIGHT // 3:
             scroll = abs(player.velocity_y)
             player.rect.y += scroll
-            score += scroll
+            score += int(scroll)
 
             for sprite in all_sprites:
                 if sprite != player:
@@ -315,7 +315,7 @@ while running:
         screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 + 50))
 
     elif game_state == 'playing':
-        text = font.render(f"ркуорд: {score}", True, WHITE)
+        text = font.render(f"рекорд: {score}", True, WHITE)
         screen.blit(text, (10, 10))
         text = font.render(f"Лучший рекорд: {high_score}", True, WHITE)
         screen.blit(text, (10, 50))
